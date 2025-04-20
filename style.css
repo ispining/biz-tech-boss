@@ -121,6 +121,19 @@ body, html {
     flex-wrap: wrap; /* Перенос на новую строку на маленьких экранах */
 }
 
+/* Адаптация для мобильных устройств: кнопки в два столбца */
+@media (max-width: 480px) {
+    .social-links {
+        justify-content: space-around; /* Распределяем кнопки равномерно */
+    }
+    .social-icon {
+        flex: 1 1 calc(50% - 15px); /* Две колонки с учетом gap */
+        max-width: calc(50% - 15px); /* Ограничиваем максимальную ширину */
+        width: auto; /* Отменяем возможную фиксированную ширину */
+        padding: 20px 30px !important; /* Значительно увеличенный внутренний отступ для мобильных */
+    }
+}
+
 .social-icon {
     /* Наследует стили .btn */
     display: inline-flex; /* Используем flex для центрирования иконки и текста */
@@ -231,6 +244,12 @@ body, html {
     font-size: 0.9em; /* Базовый размер параграфа для очень маленьких экранов */
     margin-bottom: 30px; /* Уменьшенный отступ */
     opacity: 0.9;
+    /* Стили для затемненного фона со скруглением */
+    background-color: rgba(0, 0, 0, 0.5); /* Слегка затемненный фон */
+    padding: 5px 15px; /* Внутренние отступы */
+    border-radius: 10px; /* Скругление углов */
+    display: inline-block; /* Фон только вокруг текста */
+    margin-top: 10px; /* Отступ сверху */
 }
 
 /* Placeholder для фоновой графики в Hero */
@@ -250,10 +269,14 @@ body, html {
  * Стили для переключателя языка
  */
 .language-switcher {
-    position: fixed;
-    top: 20px;
-    right: 80px; /* Сдвигаем левее кнопки темы */
-    z-index: 100;
+    /* position: fixed; */ /* Убираем фиксированное позиционирование */
+    /* top: 20px; */
+    /* right: 80px; */
+    z-index: 51; /* Поверх меню, но ниже модального окна */
+    margin-left: auto; /* Прижимаем к правому краю контейнера */
+    /* Добавляем отступы для выравнивания с меню */
+    padding: 10px 0;
+    flex-shrink: 0; /* Предотвращаем сжатие */
 }
 
 #language-select {
@@ -310,6 +333,11 @@ body.rtl .contact-info {
 }
 
 
+
+body.rtl .dropdown-menu {
+    right: 0;
+    left: auto;
+}
 
 /*
  * Адаптивность (Mobile-first)
@@ -972,8 +1000,9 @@ footer {
 
 .sticky-nav .container {
     display: flex;
-    justify-content: center; /* Центрируем элементы навигации */
+    justify-content: space-between; /* Распределяем элементы: меню и переключатель языка */
     align-items: center;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
 }
 
 .nav-list {
@@ -982,6 +1011,7 @@ footer {
     padding: 0;
     display: flex;
     gap: 30px; /* Отступ между основными пунктами меню */
+    flex-shrink: 0; /* Предотвращаем сжатие */
 }
 
 .nav-item {
@@ -1055,11 +1085,24 @@ footer {
 /* Адаптивность для мобильных устройств */
 @media (max-width: 768px) {
     .sticky-nav .container {
+        /* justify-content: space-between; */ /* Уже установлено выше */
+        flex-direction: row; /* Элементы в ряд на мобильных */
         justify-content: space-between; /* Распределяем элементы */
+        align-items: center; /* Выравниваем по центру вертикали */
     }
 
     .nav-list {
         gap: 15px; /* Уменьшаем отступ */
+        margin-bottom: 0; /* Убираем нижний отступ */
+        flex-shrink: 0; /* Предотвращаем сжатие */
+    }
+
+    .language-switcher {
+        margin-left: 0; /* Убираем прижимание к правому краю */
+        padding: 0; /* Убираем лишние отступы */
+        /* Добавляем небольшой отступ слева, чтобы отделить от меню */
+        margin-left: 15px;
+        flex-shrink: 0; /* Предотвращаем сжатие */
     }
 
     .nav-link {
@@ -1069,6 +1112,8 @@ footer {
 
     .dropdown-menu {
         min-width: 150px; /* Уменьшаем минимальную ширину */
+        max-width: 100%; /* Ограничиваем максимальную ширину */
+        width: 100%; /* Занимаем всю доступную ширину */
     }
 
     .dropdown-item {
