@@ -107,6 +107,10 @@ const translations = {
         "swiper.nextSlideMessage": "Следующий проект",
         "swiper.paginationBulletMessage": "Перейти к проекту {{index}}"
     },
+    // Meta and Open Graph translations
+    "meta.description": "Разработка интеллектуальных решений для автоматизации и оптимизации бизнес-процессов. Full-Stack разработка, ИИ, веб-сайты, ПО, скрипты, боты, техподдержка, безопасность, умные дома.",
+    "og.title": "Автоматизация для вашего бизнеса",
+    "og.description": "Разработка интеллектуальных решений для автоматизации и оптимизации бизнес-процессов. Full-Stack разработка, ИИ, веб-сайты, ПО, скрипты, боты, техподдержка, безопасность, умные дома.",
     en: {
         "hero.title": "Illya Lazarev",
         "hero.subtitle": "This is not the beginning of your journey into the world of technology — this is already the ultimate goal.",
@@ -210,6 +214,10 @@ const translations = {
         "swiper.nextSlideMessage": "Next project",
         "swiper.paginationBulletMessage": "Go to project {{index}}"
     },
+    // Meta and Open Graph translations
+    "meta.description": "Development of intelligent solutions for business process automation and optimization. Full-Stack development, AI, websites, software, scripts, bots, technical support, security, smart homes.",
+    "og.title": "Automation for Your Business",
+    "og.description": "Development of intelligent solutions for business process automation and optimization. Full-Stack development, AI, websites, software, scripts, bots, technical support, security, smart homes.",
     he: {
         "hero.title": "איליה לזרב",
         "hero.subtitle": "זו לא תחילת הדרך לעולם הטכנולוגיה, זה כבר היעד",
@@ -318,8 +326,12 @@ const translations = {
         "swiper.prevSlideMessage": "פרויקט קודם",
         "swiper.nextSlideMessage": "פרויקט הבא",
         "swiper.paginationBulletMessage": "עבור לפרויקט {{index}}"
-    }
-};
+    },
+    // Meta and Open Graph translations
+    "meta.description": "פיתוח פתרונות חכמים לאוטומציה ואופטימיזציה של תהליכים עסקיים. פיתוח Full-Stack, AI, אתרי אינטרנט, תוכנה, סקריפטים, בוטים, תמיכה טכנית, אבטחה, בתים חכמים.",
+    "og.title": "אוטומציה לעסק שלך",
+    "og.description": "פיתוח פתרונות חכמים לאוטומציה ואופטימיזציה של תהליכים עסקיים. פיתוח Full-Stack, AI, אתרי אינטרנט, תוכנה, סקריפטים, בוטים, תמיכה טכנית, אבטחה, בתים חכמים.",
+    };
 
 // === Функция для получения перевода по ключу ===
 // Возвращает переведенную строку или ключ, если перевод не найден
@@ -343,6 +355,26 @@ function applyTranslations(language) {
             }
         }
     });
+
+    // Обновление мета-тегов для SEO и социальных сетей
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const ogTitle = document.querySelector('meta[property="og:title"]');
+    const ogDescription = document.querySelector('meta[property="og:description"]');
+    const documentTitle = document.querySelector('title');
+
+    if (metaDescription && translations[language]?.["meta.description"]) {
+        metaDescription.content = translations[language]["meta.description"];
+    }
+    if (ogTitle && translations[language]?.["og.title"]) {
+        ogTitle.content = translations[language]["og.title"];
+    }
+    if (ogDescription && translations[language]?.["og.description"]) {
+        ogDescription.content = translations[language]["og.description"];
+    }
+    // Обновление заголовка страницы
+    if (documentTitle && translations[language]?.["og.title"]) {
+        documentTitle.textContent = translations[language]["og.title"];
+    }
 
     // Обработка placeholder'ов
     document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
