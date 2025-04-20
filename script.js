@@ -218,6 +218,7 @@ const translations = {
     "meta.description": "Development of intelligent solutions for business process automation and optimization. Full-Stack development, AI, websites, software, scripts, bots, technical support, security, smart homes.",
     "og.title": "Automation for Your Business",
     "og.description": "Development of intelligent solutions for business process automation and optimization. Full-Stack development, AI, websites, software, scripts, bots, technical support, security, smart homes.",
+    "hero.title": "Automation for Your Business",
     he: {
         "hero.title": "איליה לזרב",
         "hero.subtitle": "זו לא תחילת הדרך לעולם הטכנולוגיה, זה כבר היעד",
@@ -360,7 +361,6 @@ function applyTranslations(language) {
     const metaDescription = document.querySelector('meta[name="description"]');
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogDescription = document.querySelector('meta[property="og:description"]');
-    const documentTitle = document.querySelector('title');
 
     if (metaDescription && translations[language]?.["meta.description"]) {
         metaDescription.content = translations[language]["meta.description"];
@@ -372,8 +372,14 @@ function applyTranslations(language) {
         ogDescription.content = translations[language]["og.description"];
     }
     // Обновление заголовка страницы
-    if (documentTitle && translations[language]?.["og.title"]) {
-        documentTitle.textContent = translations[language]["og.title"];
+    console.log('Attempting to update document.title for language:', language);
+    const newTitle = translations[language]?.["hero.title"];
+    console.log('New title content:', newTitle);
+    if (newTitle) {
+        document.title = newTitle;
+        console.log('document.title updated successfully.');
+    } else {
+        console.log('Translation for title missing.');
     }
 
     // Обработка placeholder'ов
