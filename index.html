@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоматизация для вашего бизнеса</title>
+    <!-- Безопасность по умолчанию: CSP (добавлено data: для font-src) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https: fonts.gstatic.com data:;">
+    
+    <link rel="stylesheet" href="style.css">
+    <!-- Использование CDN для сторонних библиотек -->
+    <!-- Пример: Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Swiper.js CSS (v11.0.5) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Пример: Google Font - Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sticky Navigation Menu -->
+    <nav class="sticky-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.products">Продукты</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://worker-ai.onrender.com/" class="dropdown-item" target="_blank" rel="noopener noreferrer">Worker-AI</a></li>
+                        <li><a href="https://py-converts.onrender.com/" class="dropdown-item" target="_blank" rel="noopener noreferrer">PyConverts</a></li>
+                        <li><a href="https://ai-translate-11hp.onrender.com/" class="dropdown-item" target="_blank" rel="noopener noreferrer">AI-translate</a></li>
+
+                        <!-- Project links will be added here -->
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.categories">Категории</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#hero" class="dropdown-item" data-i18n="nav.categories.hero">Главный экран</a></li>
+                        <li><a href="#courses" class="dropdown-item" data-i18n="nav.categories.courses">Курсы</a></li>
+                        <li><a href="#projects" class="dropdown-item" data-i18n="nav.categories.projects">Каталог проектов</a></li>
+                        <li><a href="#services" class="dropdown-item" data-i18n="nav.categories.services">Наши услуги</a></li>
+                        <li><a href="#about" class="dropdown-item" data-i18n="nav.categories.about">Обо мне</a></li>
+                        <li><a href="#technologies" class="dropdown-item" data-i18n="nav.categories.technologies">Технологии</a></li>
+                        <li><a href="#contact" class="dropdown-item" data-i18n="nav.categories.contact">Свяжитесь с нами</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+
+    <!-- Переключатель языка -->
+    <div class="language-switcher">
+        <select id="language-select" aria-label="Выберите язык">
+            <option value="ru">Русский</option>
+            <option value="en">English</option>
+            <option value="he">עברית</option>
+        </select>
+    </div>
+
+    <!-- Главный экран (Hero Section) -->
+    <header id="hero" class="section">
+        <div class="container">
+            <h1 data-i18n="hero.title">Автоматизация, которая трансформирует ваш бизнес</h1>
+            <p data-i18n="hero.subtitle">Мы создаем интеллектуальные решения для оптимизации процессов и роста эффективности.</p>
+            <div class="social-links"> <!-- Keep social-links for potential flexbox/grid styling -->
+                <a href="https://wa.me/972504834744" class="btn social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-i18n="social.whatsapp">WhatsApp</span>
+                </a>
+                <a href="https://t.me/sbdtadmin" class="btn social-icon" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span data-i18n="social.telegram">Telegram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sbdt" class="btn social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span data-i18n="social.linkedin">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/ill4u" class="btn social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                    <span data-i18n="social.facebook">Facebook</span>
+                </a>
+                <a href="https://www.youtube.com/@PythonShik" class="btn social-icon youtube-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer"> <!-- YouTube button -->
+                    <i class="fab fa-youtube"></i>
+                    <span data-i18n="social.youtube">YouTube</span>
+                </a>
+            </div>
+        </div>
+        <!-- Здесь будет место для интерактивной фоновой графики -->
+        <div class="hero-background"></div>
+    </header>
+
+
+    <!-- Курсы -->
+    <section id="courses" class="section">
+        <div class="container">
+            <h2 data-i18n="courses.title">Курсы</h2>
+            <div class="courses-grid">
+                <!-- Примеры курсов -->
+                <div class="course-item">
+                    <h3 data-i18n="courses.course1.title">Курс по Python</h3>
+                    <p data-i18n="courses.course1.description">Изучите основы и продвинутые возможности Python для разработки.</p>
+                </div>
+                 <div class="course-item">
+                    <h3 data-i18n="courses.course2.title">Курс по JavaScript</h3>
+                    <p data-i18n="courses.course2.description">Освойте современный JavaScript для фронтенд и бекенд разработки.</p>
+                </div>
+                <div class="course-item" data-url="https://biztechlab.onrender.com/">
+                    <h3 data-i18n="courses.course3.title">bizTechLab - Технологии в бизнесе</h3>
+                    <p data-i18n="courses.course3.description">Курс по интеграции современных технологий в бизнес-процессы.</p>
+                    <!-- Кнопка удалена, карточка будет кликабельной через JS -->
+                </div>
+                <!-- Добавить больше курсов -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Каталог проектов -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 data-i18n="projects.title">Каталог проектов</h2>
+            <!-- Swiper Container -->
+            <div class="swiper project-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="project-item portfolio-item" data-url="https://worker-ai.onrender.com/">
+                            <img data-src="https://raw.githubusercontent.com/ispining/worker-ai/refs/heads/main/main-photo.png" src="" alt="Worker-AI Project Image">
+                            <h3 data-i18n="projects.worker_ai.title">Worker-AI</h3>
+                            <p data-i18n="projects.worker_ai.description">Проект для индикации личностных качеств сотрудников</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="project-item portfolio-item" data-url="https://py-converts.onrender.com/">
+                            <img data-src="py-converts.png" src="" alt="PyConverts Project Image">
+                            <h3 data-i18n="projects.py_converts.title">PyConverts</h3>
+                            <p data-i18n="projects.py_converts.description">Python конвертеры: REST >>> Python cURL >>> Python</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="project-item portfolio-item" data-url="https://ai-translate-11hp.onrender.com/">
+                            <img data-src="ai_translate.png" src="" alt="AI-translate Project Image">
+                            <h3 data-i18n="projects.ai_translate.title">AI-translate</h3>
+                            <p data-i18n="projects.ai_translate.description">Интеллектуальный переводчик на базе ИИ для быстрого и точного перевода текстов.</p>
+                         </div>
+                    </div>
+                    <!-- Добавить больше слайдов/проектов сюда -->
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination project-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-prev project-button-prev"></div>
+                <div class="swiper-button-next project-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги (обновленная секция с подкатегориями и модальными окнами) -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 data-i18n="services.title">Наши услуги</h2>
+            <div class="services-grid">
+                <!-- Подкатегории услуг -->
+                <div class="service-item" data-service="ai">
+                    <h3 data-i18n="services.ai.title">ИИ для бизнеса</h3>
+                    <p data-i18n="services.ai.description">Внедрение решений на основе искусственного интеллекта для оптимизации и анализа.</p>
+                </div>
+                <div class="service-item" data-service="webdev">
+                    <h3 data-i18n="services.webdev.title">Разработка сайтов</h3>
+                    <p data-i18n="services.webdev.description">Создание современных, адаптивных и высокопроизводительных веб-сайтов.</p>
+                </div>
+                <div class="service-item" data-service="automation">
+                    <h3 data-i18n="services.automation.title">Автоматизация</h3>
+                    <p data-i18n="services.automation.description">Автоматизация рутинных бизнес-процессов для повышения эффективности.</p>
+                </div>
+                 <div class="service-item" data-service="software">
+                    <h3 data-i18n="services.software.title">Разработка ПО</h3>
+                    <p data-i18n="services.software.description">Разработка кастомного программного обеспечения под уникальные задачи вашего бизнеса.</p>
+                </div>
+                 <div class="service-item" data-service="prototyping">
+                    <h3 data-i18n="services.prototyping.title">Разработка прототипов</h3>
+                    <p data-i18n="services.prototyping.description">Быстрое создание интерактивных прототипов для тестирования идей.</p>
+                </div>
+                 <div class="service-item" data-service="scripts">
+                    <h3 data-i18n="services.scripts.title">Скрипты и боты</h3>
+                    <p data-i18n="services.scripts.description">Разработка скриптов и ботов для автоматизации задач и взаимодействия.</p>
+                </div>
+                <!-- Новые услуги -->
+                <div class="service-item" data-service="tech_support">
+                    <h3 data-i18n="services.tech_support.title">Техподдержка бизнеса</h3>
+                    <p data-i18n="services.tech_support.description">Комплексная техническая поддержка для бесперебойной работы вашего бизнеса.</p>
+                </div>
+                <div class="service-item" data-service="security">
+                    <h3 data-i18n="services.security.title">Безопасность и защита</h3>
+                    <p data-i18n="services.security.description">Установка и настройка систем видеонаблюдения и сигнализации.</p>
+                </div>
+                <div class="service-item" data-service="smart_home">
+                    <h3 data-i18n="services.smart_home.title">Умные дома</h3>
+                    <p data-i18n="services.smart_home.description">Проектирование и внедрение систем умного дома для комфорта и безопасности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Обо мне -->
+    <section id="about" class="section">
+        <div class="container"> <!-- Основной контейнер секции -->
+            <!-- Заголовок секции вынесен для корректного центрирования -->
+            <h2 data-i18n="about.title">Обо мне</h2>
+
+            <!-- Flex-контейнер для фото и текста -->
+            <div class="about-me-container">
+                <!-- Контейнер для фото -->
+                <div class="about-me-photo">
+                    <!-- Замените src на реальный путь к фото -->
+                    <img src="https://raw.githubusercontent.com/ispining/ru/refs/heads/master/images/photo1683672140.jpeg" alt="Фото Ильи Лазарева" data-i18n-alt="about.photoAlt">
+                </div>
+                <!-- Контейнер для текста -->
+                <div class="about-me-text">
+                    <h3 class="about-me-name" data-i18n="about.name">Илья Лазарев</h3>
+                    <p data-i18n="about.description">Привет! Мне 28 лет, я Full-Stack разработчик из Израиля. Увлекаюсь созданием интерактивных веб-приложений, автоматизацией процессов и исследованием возможностей ИИ. Всегда в поиске интересных проектов и новых вызовов.</p>
+                    <!-- Можно добавить больше деталей: опыт, навыки и т.д. -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Технологии -->
+    <section id="technologies" class="section">
+        <div class="container">
+            <h2 data-i18n="technologies.title">Технологии</h2>
+            <div class="tech-list">
+                <span data-i18n="tech.python">Python</span>
+                <span data-i18n="tech.c">C</span>
+                <span data-i18n="tech.cpp">C++</span>
+                <span data-i18n="tech.bash">Bash</span>
+                <span data-i18n="tech.javascript">JavaScript</span>
+                <span data-i18n="tech.html">HTML</span>
+                <span data-i18n="tech.css">CSS</span>
+                <span data-i18n="tech.sql">SQL</span>
+                <span data-i18n="tech.flask">Flask</span>
+                <span data-i18n="tech.fastapi">FastAPI</span>
+                <span data-i18n="tech.telegram">Telegram</span>
+                <span data-i18n="tech.chartjs">Chart.js</span>
+                <span data-i18n="tech.bootstrap5">Bootstrap 5</span>
+                <span data-i18n="tech.jquery">jQuery</span>
+                <span data-i18n="tech.openai_gpt">OpenAI GPT</span>
+                <span data-i18n="tech.google_gemini">Google Gemini</span>
+                <span data-i18n="tech.multiagent_ai">Мультиагентные AI‑сценарии</span>
+                <span data-i18n="tech.sqlite">SQLite</span>
+                <span data-i18n="tech.postgresql">PostgreSQL</span>
+                <span data-i18n="tech.supabase">Supabase</span>
+                <span data-i18n="tech.docker">Docker</span>
+                <span data-i18n="tech.docker_compose">Docker Compose</span>
+                <span data-i18n="tech.termux">Termux</span>
+                <span data-i18n="tech.render">Render</span>
+                <span data-i18n="tech.mqtt">MQTT</span>
+                <span data-i18n="tech.github">GitHub</span>
+                <span data-i18n="tech.vscode">VS Code</span>
+                <span data-i18n="tech.bootstrap_studio">Bootstrap Studio</span>
+                <span data-i18n="tech.android_studio">Android Studio</span>
+                <span data-i18n="tech.esp32">ESP32</span>
+                <span data-i18n="tech.arduino_uno">Arduino Uno</span>
+                <span data-i18n="tech.arduino_nano">Arduino Nano</span>
+                <span data-i18n="tech.raspberry_pi">Raspberry Pi</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 data-i18n="contact.title">Свяжитесь с нами</h2>
+            <div class="social-links">
+                <a href="https://wa.me/972504834744" class="btn social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-i18n="social.whatsapp">WhatsApp</span>
+                </a>
+                <a href="https://t.me/sbdtadmin" class="btn social-icon" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span data-i18n="social.telegram">Telegram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sbdt" class="btn social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span data-i18n="social.linkedin">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/ill4u" class="btn social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                    <span data-i18n="social.facebook">Facebook</span>
+                </a>
+            </div>
+            <!-- Контактная информация -->
+            <div class="contact-info">
+                <p data-i18n="contact.email">Email: lazarevillya031@gmail.com</p>
+                <p data-i18n="contact.phone"><span dir="ltr">Телефон: +972 504834744</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p data-i18n="footer.copyright">2025 Разработчик Илья Лазарев. <br>Все права защищены.</p>
+            <!-- Ссылки на соцсети -->
+        </div>
+    </footer>
+
+    <!-- Модальное окно для услуг -->
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div id="modal-details"></div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    <!-- Swiper.js JS (v11.0.5) - Исправлен integrity hash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Placeholder for other CDN JS libraries -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/some-library/1.0.0/some-library.min.js" integrity="..." crossorigin="anonymous"></script> -->
+</body>
+</html>
