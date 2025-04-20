@@ -5,8 +5,8 @@ let projectSwiperInstance; // Объявляем переменную для э�
 // === Объект с переводами ===
 const translations = {
     ru: {
-        "hero.title": "Автоматизация, которая трансформирует ваш бизнес",
-        "hero.subtitle": "Мы создаем интеллектуальные решения для оптимизации процессов и роста эффективности.",
+        "hero.title": "Илья Лазарев",
+        "hero.subtitle": "Это не начало твоего пути в технологичный мир, это уже конечная цель",
         "hero.button": "Обсудить проект",
         "nav.products": "Продукты",
         "nav.categories": "Категории",
@@ -108,8 +108,8 @@ const translations = {
         "swiper.paginationBulletMessage": "Перейти к проекту {{index}}"
     },
     en: {
-        "hero.title": "Automation that Transforms Your Business",
-        "hero.subtitle": "We create intelligent solutions to optimize processes and increase efficiency.",
+        "hero.title": "Illya Lazarev",
+        "hero.subtitle": "This is not the beginning of your journey into the world of technology — this is already the ultimate goal.",
         "hero.button": "Discuss a Project",
         "about.title": "About Me",
         "about.name": "Ilya Lazarev",
@@ -211,8 +211,8 @@ const translations = {
         "swiper.paginationBulletMessage": "Go to project {{index}}"
     },
     he: {
-        "hero.title": "אוטומציה שמשנה את העסק שלך",
-        "hero.subtitle": "אנו יוצרים פתרונות חכמים לאופטימיזציה של תהליכים והגברת יעילות.",
+        "hero.title": "איליה לזרב",
+        "hero.subtitle": "זו לא תחילת הדרך לעולם הטכנולוגיה, זה כבר היעד",
         "hero.button": "לדון בפרויקט",
         "about.title": "עליי",
         "about.name": "איליה לזרב",
