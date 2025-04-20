@@ -1,0 +1,1123 @@
+/*
+ * Базовые стили и сброс
+ */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    min-height: 100vh; /* Минимальная высота для футера внизу */
+    line-height: 1.6;
+    font-family: 'Orbitron', sans-serif; /* Применяем новый шрифт */
+    color: var(--text-color); /* Используем переменную для цвета текста */
+    background-color: var(--background-color); /* Используем переменную для фона */
+    scroll-behavior: smooth; /* Плавная прокрутка по якорям */
+    transition: color 0.5s ease, background-color 0.5s ease; /* Плавный переход при смене темы */
+}
+
+*, *::before, *::after {
+    box-sizing: border-box; /* Учитываем padding и border в размере элемента */
+}
+
+/*
+ * Контейнер для центрирования контента
+ */
+.container {
+    width: 90%;
+    max-width: 1200px; /* Максимальная ширина контента */
+    margin: 0 auto; /* Центрирование блока */
+    padding: 0 15px; /* Внутренние отступы по бокам */
+}
+
+/*
+ * Стили для секций
+ */
+.section {
+    padding: 100px 0; /* Увеличенные вертикальные отступы */
+    text-align: center; /* Центрирование текста в секциях */
+    opacity: 0; /* Скрываем по умолчанию для анимации появления */
+    transform: translateY(50px); /* Сдвигаем вниз для анимации */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Плавное появление и сдвиг */
+}
+
+.section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+.section h2 {
+    margin-top: 0;
+    margin-bottom: 60px; /* Увеличенный отступ под заголовком */
+    font-size: 3em; /* Размер заголовков секций */
+    color: var(--primary-color); /* Используем переменную для заголовков */
+    text-transform: uppercase; /* Заголовки в верхнем регистре */
+    letter-spacing: 2px; /* Увеличенный интервал между буквами */
+    position: relative;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--primary-color);
+    margin: 20px auto 0;
+    transition: width 0.5s ease;
+}
+
+.section.visible h2::after {
+    width: 120px; /* Анимация подчеркивания */
+}
+
+
+/*
+ * Стили для кнопки (Call to Action)
+ */
+.btn {
+    display: inline-block;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); /* Градиентная кнопка */
+    color: white;
+    padding: 15px 30px; /* Увеличенные отступы */
+    text-decoration: none;
+    border-radius: 30px; /* Более скругленные углы */
+    font-size: 1.2em; /* Увеличенный шрифт */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Анимация при наведении */
+    border: none;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 0;
+}
+
+.btn:hover {
+    transform: translateY(-5px); /* Сдвиг вверх при наведении */
+    box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3); /* Тень при наведении */
+}
+
+/* Стили для социальных иконок */
+.social-links {
+    display: flex;
+    gap: 15px; /* Отступ между кнопками */
+    justify-content: center; /* Центрирование кнопок */
+    margin-top: 30px; /* Отступ сверху */
+    flex-wrap: wrap; /* Перенос на новую строку на маленьких экранах */
+}
+
+/* Адаптация для мобильных устройств: кнопки в два столбца */
+@media (max-width: 480px) {
+    .social-links {
+        justify-content: space-around; /* Распределяем кнопки равномерно */
+    }
+    .social-icon {
+        flex: 1 1 calc(50% - 15px); /* Две колонки с учетом gap */
+        max-width: calc(50% - 15px); /* Ограничиваем максимальную ширину */
+        width: auto; /* Отменяем возможную фиксированную ширину */
+        padding: 20px 30px !important; /* Значительно увеличенный внутренний отступ для мобильных */
+    }
+}
+
+.social-icon {
+    /* Наследует стили .btn */
+    display: inline-flex; /* Используем flex для центрирования иконки и текста */
+    align-items: center; /* Выравнивание по вертикали */
+    justify-content: center; /* Выравнивание по горизонтали */
+    gap: 8px; /* Отступ между иконкой и текстом */
+    padding: 10px 20px; /* Уменьшенные отступы для компактности */
+    font-size: 1em; /* Уменьшенный размер шрифта */
+}
+
+.social-icon i {
+    font-size: 1.2em; /* Размер иконки */
+}
+
+/* Стилизация фона кнопок соцсетей по брендовым цветам */
+.social-icon[aria-label="WhatsApp"] {
+    background: linear-gradient(45deg, #25D366, #128C7E); /* Зеленый градиент WhatsApp */
+    border-color: #25D366;
+}
+
+.social-icon[aria-label="WhatsApp"]:hover {
+     box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); /* Тень WhatsApp */
+     border-color: #128C7E;
+}
+
+
+.social-icon[aria-label="Telegram"] {
+     /* Использует стандартный градиент .btn */
+     border-color: var(--primary-color); /* Граница как у других кнопок */
+}
+
+.social-icon[aria-label="Telegram"]:hover {
+     box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3); /* Тень как у других кнопок */
+}
+
+
+.social-icon[aria-label="LinkedIn"] {
+    background: linear-gradient(45deg, #0077B5, #004F80); /* Синий градиент LinkedIn */
+    border-color: #0077B5;
+}
+
+.social-icon[aria-label="LinkedIn"]:hover {
+     box-shadow: 0 10px 20px rgba(0, 119, 181, 0.3); /* Тень LinkedIn */
+     border-color: #004F80;
+}
+
+.social-icon[aria-label="Facebook"] {
+    background: linear-gradient(45deg, #1877F2, #0E5A9E); /* Синий градиент Facebook */
+    border-color: #1877F2;
+}
+
+.social-icon[aria-label="Facebook"]:hover {
+     box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3); /* Тень Facebook */
+     border-color: #0E5A9E;
+}
+
+.social-icon[aria-label="YouTube"] {
+    background: linear-gradient(45deg, #FF0000, #CC0000); /* Красный градиент YouTube */
+    border-color: #FF0000;
+}
+
+.social-icon[aria-label="YouTube"]:hover {
+     box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3); /* Тень YouTube */
+     border-color: #CC0000;
+}
+
+.youtube-icon {
+    display: none;
+}
+
+/*
+ * Стили для Hero Section
+ */
+#hero {
+    position: relative; /* Для позиционирования фоновой графики */
+    background-color: #000; /* Темный фон для hero */
+    color: white; /* Белый текст на темном фоне */
+    padding: 40px 0; /* Уменьшенные отступы для маленьких экранов */
+    display: flex;
+    align-items: center; /* Центрирование контента по вертикали */
+    justify-content: center; /* Центрирование контента по горизонтали */
+    min-height: 100vh; /* Hero на всю высоту экрана */
+    height: 100vh; /* Явно устанавливаем высоту */
+    overflow: hidden; /* Скрываем все, что выходит за пределы */
+    text-shadow: 0 0 10px rgba(0, 123, 255, 0.5); /* Неоновый эффект для текста */
+}
+
+#hero .container {
+    position: relative;
+    z-index: 2; /* Контент поверх фона */
+    /* Дополнительные стили для центрирования контента внутри flex-контейнера #hero */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Контейнер занимает всю высоту Hero */
+}
+
+#hero h1 {
+    font-size: 2em; /* Базовый размер заголовка для очень маленьких экранов */
+    margin-bottom: 15px; /* Уменьшенный отступ */
+    text-transform: uppercase;
+    letter-spacing: 2px; /* Уменьшенный интервал */
+    line-height: 1.2;
+}
+
+#hero p {
+    font-size: 0.9em; /* Базовый размер параграфа для очень маленьких экранов */
+    margin-bottom: 30px; /* Уменьшенный отступ */
+    opacity: 0.9;
+    /* Стили для затемненного фона со скруглением */
+    background-color: rgba(0, 0, 0, 0.5); /* Слегка затемненный фон */
+    padding: 5px 15px; /* Внутренние отступы */
+    border-radius: 10px; /* Скругление углов */
+    display: inline-block; /* Фон только вокруг текста */
+    margin-top: 10px; /* Отступ сверху */
+}
+
+/* Placeholder для фоновой графики в Hero */
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(0, 123, 255, 0.3) 0%, rgba(0, 0, 0, 0.8) 80%); /* Футуристичный градиент */
+    z-index: 1;
+    /* Здесь будут стили для интерактивной графики (Canvas/WebGL) */
+}
+
+
+/*
+ * Стили для переключателя языка
+ */
+.language-switcher {
+    /* position: fixed; */ /* Убираем фиксированное позиционирование */
+    /* top: 20px; */
+    /* right: 80px; */
+    z-index: 51; /* Поверх меню, но ниже модального окна */
+    margin-left: auto; /* Прижимаем к правому краю контейнера */
+    /* Добавляем отступы для выравнивания с меню */
+    padding: 10px 0;
+    flex-shrink: 0; /* Предотвращаем сжатие */
+}
+
+#language-select {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-size: 1em;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+#language-select:hover {
+    border-color: var(--primary-color);
+}
+
+/*
+ * Стили для RTL (Right-to-Left) направления текста (для иврита)
+ */
+body.rtl {
+    direction: rtl; /* Направление текста справа налево */
+    text-align: right; /* Выравнивание текста по правому краю */
+}
+
+body.rtl .section h2::after {
+    margin: 20px auto 0; /* Центрируем подчеркивание заголовка */
+}
+
+body.rtl .service-item,
+body.rtl .portfolio-item,
+body.rtl .course-item, /* Добавим для курсов */
+body.rtl .project-item { /* Добавим для проектов */
+    text-align: right; /* Выравнивание текста в карточках */
+}
+
+/* Выравнивание текста в блоке "Обо мне" для RTL */
+body.rtl .about-me-text {
+    text-align: right;
+}
+
+
+body.rtl #contact-form {
+    text-align: right; /* Выравнивание текста в форме */
+}
+
+body.rtl #contact-form input,
+body.rtl #contact-form textarea {
+    text-align: right; /* Выравнивание текста в полях формы */
+}
+
+body.rtl .contact-info {
+    text-align: right; /* Выравнивание контактной информации */
+}
+
+
+
+body.rtl .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+/*
+ * Адаптивность (Mobile-first)
+ */
+
+/* Для экранов шире 480px */
+@media (min-width: 481px) {
+    .section {
+        padding: 120px 0;
+    }
+
+    .section h2 {
+        font-size: 3.5em;
+    }
+
+    #hero h1 {
+        font-size: 3em; /* Адаптивный размер заголовка */
+        letter-spacing: 3px;
+    }
+
+    #hero p {
+        font-size: 1.2em; /* Адаптивный размер параграфа */
+    }
+}
+
+/* Для экранов шире 768px */
+@media (min-width: 769px) {
+    .section {
+        padding: 150px 0;
+    }
+
+    .section h2 {
+        font-size: 4em;
+    }
+
+    #hero h1 {
+        font-size: 3.5em; /* Скорректированный адаптивный размер заголовка */
+    }
+
+    #hero p {
+        font-size: 1.4em; /* Скорректированный адаптивный размер параграфа */
+    }
+}
+
+/* Для экранов шире 1200px */
+@media (min-width: 1200px) {
+     #hero h1 {
+        font-size: 4.5em; /* Скорректированный адаптивный размер заголовка */
+    }
+
+    #hero p {
+        font-size: 1.6em; /* Скорректированный адаптивный размер параграфа */
+    }
+}
+
+
+/*
+ * Стили для секции "О компании"
+ */
+#about {
+    background-color: var(--background-color);
+}
+
+
+/*
+ * Стили для секции "Услуги"
+ */
+#services {
+    background-color: var(--card-background);
+    padding-top: 50px; /* Reduced top padding */
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Адаптивная сетка */
+    gap: 40px; /* Увеличенные отступы */
+    margin-top: 60px;
+}
+
+.service-item {
+    background-color: var(--background-color); /* Используем переменную для фона карточек */
+    padding: 30px;
+    border-radius: 10px; /* Более скругленные углы */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease; /* Плавный переход */
+    border: 1px solid transparent; /* Прозрачная граница для анимации */
+    cursor: pointer; /* Добавляем курсор-указатель */
+}
+
+.service-item:hover {
+    transform: translateY(-15px); /* Увеличенный сдвиг вверх */
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2); /* Усиленная тень */
+    border-color: var(--primary-color); /* Подсветка границы */
+}
+
+.service-item h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.6em; /* Увеличенный шрифт */
+    margin-bottom: 15px;
+}
+
+.service-item p {
+    font-size: 1.1em;
+    color: var(--text-color); /* Используем переменную */
+}
+
+/*
+ * Стили для секции "Портфолио"
+ */
+#portfolio {
+    background-color: var(--background-color);
+}
+
+/* Стили для сетки портфолио/проектов - УБРАНО display: grid, т.к. используется Swiper */
+.portfolio-grid {
+    /* display: grid; */ /* Убрано для Swiper */
+    /* grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); */ /* Убрано для Swiper */
+    gap: 40px; /* Оставляем для отступов, если понадобится вне Swiper */
+    margin-top: 60px;
+}
+
+/* Стили для карточки портфолио/проекта */
+.portfolio-item,
+.project-item { /* Применяем и к .project-item */
+    background-color: var(--card-background);
+    border-radius: 8px; /* Немного уменьшим скругление */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Скорректируем тень */
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Упростим transition */
+    border: 1px solid transparent;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */ /* Убрано, т.к. высота слайда будет фиксированной */
+    height: 100%; /* Карточка занимает всю высоту слайда Swiper */
+}
+
+.portfolio-item:hover {
+    transform: translateY(-15px); /* Увеличенный сдвиг вверх */
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2); /* Усиленная тень */
+    border-color: var(--primary-color); /* Подсветка границы */
+}
+
+.portfolio-item img,
+.project-item img {
+    display: block;
+    width: 100%;
+    height: 160px; /* Уменьшенная высота изображения (было 250px) */
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.05); /* Увеличение изображения при наведении */
+}
+
+
+.portfolio-item h3,
+.project-item h3 {
+    margin: 15px 15px 8px 15px; /* Уменьшенные отступы */
+    color: var(--primary-color);
+    font-size: 1.1em; /* Уменьшенный шрифт (было 1.4em) */
+}
+
+.portfolio-item p,
+.project-item p {
+    margin: 0 15px 15px 15px; /* Уменьшенные отступы, добавлен нижний */
+    font-size: 0.9em; /* Уменьшенный шрифт (было 1em) */
+    color: var(--text-color);
+    flex-grow: 1; /* Позволяем параграфу занимать доступное место */
+}
+
+/*
+ * Стили для секции "Технологии"
+ */
+#technologies {
+    background-color: var(--card-background);
+}
+
+.tech-list {
+    display: flex;
+    flex-wrap: wrap; /* Перенос элементов */
+    justify-content: center; /* Центрирование элементов */
+    gap: 20px; /* Увеличенные отступы */
+    margin-top: 60px;
+}
+
+.tech-list span {
+    background-color: var(--secondary-color); /* Используем переменную */
+    color: white; /* Белый текст на вторичном фоне */
+    padding: 10px 20px; /* Увеличенные отступы */
+    border-radius: 25px; /* Более скругленные углы */
+    font-size: 1em; /* Увеличенный шрифт */
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Плавный переход */
+    cursor: pointer;
+}
+
+.tech-list span:hover {
+    background-color: var(--primary-color); /* Подсветка при наведении */
+    transform: translateY(-5px); /* Сдвиг вверх */
+}
+
+
+/*
+ * Стили для секции "Контакты"
+ */
+#contact {
+    background-color: var(--background-color);
+}
+
+#contact-form {
+    display: grid;
+    grid-template-columns: 1fr; /* Одна колонка по умолчанию */
+    gap: 25px; /* Увеличенные отступы */
+    max-width: 700px; /* Увеличенная ширина формы */
+    margin: 60px auto 30px auto;
+    text-align: left;
+    background-color: var(--card-background);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 15px; /* Увеличенные отступы */
+    border: 1px solid var(--secondary-color); /* Используем переменную */
+    border-radius: 5px;
+    font-size: 1.1em; /* Увеличенный шрифт */
+    background-color: var(--background-color); /* Используем переменную */
+    color: var(--text-color); /* Используем переменную */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Плавный переход */
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary-color); /* Подсветка при фокусе */
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+
+#contact-form textarea {
+    min-height: 180px; /* Увеличенная минимальная высота */
+    resize: vertical; /* Разрешаем изменение размера по вертикали */
+}
+
+#contact-form button {
+    width: auto; /* Кнопка по ширине контента */
+    justify-self: center; /* Центрирование кнопки в сетке */
+}
+
+.contact-info {
+    margin-top: 40px; /* Увеличенный отступ */
+    font-size: 1.2em; /* Увеличенный шрифт */
+    color: var(--text-color); /* Используем переменную */
+}
+
+.contact-info p {
+    margin-bottom: 15px; /* Увеличенный отступ */
+}
+
+
+/*
+ * Стили для футера
+ */
+footer {
+    background-color: var(--secondary-color); /* Используем переменную */
+    color: white;
+    text-align: center;
+    padding: 30px 0; /* Увеличенные отступы */
+    font-size: 1em; /* Увеличенный шрифт */
+    transition: background-color 0.3s ease; /* Плавный переход */
+}
+
+footer .container {
+    padding: 0 15px; /* Учитываем отступы контейнера */
+}
+
+/* Адаптивность формы для больших экранов */
+@media (min-width: 769px) {
+    #contact-form {
+        grid-template-columns: 1fr 1fr; /* Две колонки на больших экранах */
+    }
+
+    #contact-form textarea {
+        grid-column: span 2; /* Текстовое поле на всю ширину */
+    }
+
+    #contact-form button {
+        grid-column: span 2; /* Кнопка на всю ширину */
+    }
+}
+
+/*
+ * CSS Переменные для тем
+ */
+body {
+    --primary-color: #00ffff; /* Неоновый голубой */
+    --secondary-color: #5a6268; /* Чуть темнее серый */
+    --text-color: #e9e9e9; /* Светло-серый */
+    --background-color: #1a1a1a; /* Очень темный серый */
+    --card-background: #2a2a2a; /* Темно-серый для карточек */
+}
+
+.section h2 {
+    color: var(--primary-color); /* Заголовки в темной теме */
+}
+
+.service-item h3,
+.portfolio-item h3 {
+     color: var(--primary-color); /* Заголовки карточек в темной теме */
+}
+
+.tech-list span {
+    background-color: var(--secondary-color);
+    color: var(--text-color); /* Светлый текст на вторичном фоне в темной теме */
+}
+
+#contact-form input,
+#contact-form textarea {
+    border-color: var(--secondary-color);
+}
+
+footer {
+    background-color: var(--secondary-color);
+}
+
+/*
+ * Стили для микро-взаимодействий (класс .hovered)
+ */
+.service-item.hovered,
+.portfolio-item.hovered,
+.course-item.hovered, /* Добавляем новый класс */
+.project-item.hovered /* Добавляем новый класс */ {
+    box-shadow: 0 12px 24px rgba(0, 123, 255, 0.3); /* Усиленная тень при наведении */
+}
+
+.service-item.hovered,
+.portfolio-item.hovered,
+.course-item.hovered, /* Добавляем новый класс */
+.project-item.hovered /* Добавляем новый класс */ {
+     box-shadow: 0 12px 24px rgba(0, 255, 255, 0.2); /* Усиленная тень для темной темы (неоновый эффект) */
+}
+
+/*
+ * Стили для секции "Курсы"
+ */
+#courses {
+    background-color: var(--background-color);
+}
+
+.courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.course-item {
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease, color 0.4s ease;
+    border: 1px solid transparent;
+    cursor: pointer; /* Добавляем курсор-указатель */
+}
+
+.course-item:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 15px 30px rgba(0, 123, 255, 0.2);
+    border-color: var(--primary-color);
+}
+
+.course-item h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.course-item p {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 20px; /* Отступ перед кнопкой */
+}
+
+
+
+/*
+ * Стили для секции "Каталог проектов"
+ */
+#projects {
+    background-color: var(--card-background);
+}
+
+/* Убираем эти правила, так как стили .project-item теперь объединены с .portfolio-item выше */
+/*
+.projects-grid {
+}
+
+.project-item {
+}
+*/
+
+/*
+ * Стили для модального окна
+ */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed; /* Фиксированное положение */
+    z-index: 101; /* Поверх всего, включая переключатель темы */
+    left: 0;
+    top: 0;
+    width: 100%; /* Полная ширина */
+    height: 100%; /* Полная высота */
+    overflow: auto; /* Включаем прокрутку, если контент большой */
+    background-color: rgba(0, 0, 0, 0.8); /* Полупрозрачный черный фон */
+    backdrop-filter: blur(5px); /* Эффект размытия фона */
+    -webkit-backdrop-filter: blur(5px); /* Для Safari */
+    padding-top: 60px; /* Отступ сверху */
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: 5% auto; /* 5% сверху и снизу, центрирование по горизонтали */
+    padding: 40px; /* Увеличенные отступы */
+    border: 1px solid var(--primary-color); /* Граница с основным цветом */
+    width: 90%; /* Ширина модального окна */
+    max-width: 800px; /* Максимальная ширина */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 123, 255, 0.4); /* Неоновая тень */
+    position: relative; /* Для позиционирования кнопки закрытия */
+    animation: modalOpen 0.5s ease-out; /* Анимация появления */
+}
+
+@keyframes modalOpen {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.close-button {
+    color: var(--text-color);
+    font-size: 30px; /* Увеличенный размер */
+    font-weight: bold;
+    position: absolute;
+    top: 15px; /* Отступ сверху */
+    right: 25px; /* Отступ справа */
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: var(--primary-color); /* Подсветка при наведении/фокусе */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    color: var(--primary-color);
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.modal-content p {
+    color: var(--text-color);
+    margin-bottom: 15px;
+}
+
+.modal-content ul {
+    color: var(--text-color);
+    margin-bottom: 15px;
+    padding-left: 20px;
+}
+
+.modal-content ul li {
+    margin-bottom: 8px;
+}
+
+
+/*
+ * Анимации появления при скролле
+ */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.section.visible {
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+/* Стили для секции "Обо мне" */
+/* ========================== */
+
+/* Контейнер секции "Обо мне" */
+.about-me-container {
+    display: flex; /* Используем Flexbox для расположения фото и текста */
+    flex-wrap: wrap; /* Разрешаем перенос на новую строку на маленьких экранах */
+    align-items: flex-start; /* Выравниваем элементы по верху */
+    gap: 2rem; /* Пространство между фото и текстом */
+}
+
+/* Контейнер для фото */
+.about-me-photo {
+    flex: 1 1 250px; /* Гибкий элемент, базовая ширина 250px */
+    max-width: 300px; /* Максимальная ширина фото */
+    margin: 0 auto 1rem auto; /* Центрирование на маленьких экранах */
+}
+
+/* Стили для изображения */
+.about-me-photo img {
+    display: block; /* Убираем лишние отступы */
+    width: 100%; /* Изображение занимает всю ширину контейнера */
+    height: auto; /* Сохраняем пропорции */
+    border-radius: 50%; /* Делаем фото круглым (можно изменить) */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Небольшая тень для объема */
+    object-fit: cover; /* Масштабируем изображение, сохраняя пропорции и обрезая лишнее */
+}
+
+/* Контейнер для текста */
+.about-me-text {
+    flex: 2 1 400px; /* Текст занимает больше места, базовая ширина 400px */
+    text-align: left; /* Выравниваем текст по левому краю по умолчанию */
+}
+
+/* Стиль для имени */
+.about-me-name {
+    font-size: 2.5rem; /* Увеличиваем размер шрифта для имени */
+    margin-bottom: 0.5rem; /* Небольшой отступ снизу */
+    font-weight: 700; /* Делаем шрифт жирнее */
+    color: var(--primary-color); /* Используем основной цвет темы */
+}
+
+/* Адаптация для больших экранов */
+@media (min-width: 768px) {
+    .about-me-photo {
+        margin: 0; /* Убираем авто-отступы на больших экранах */
+    }
+}
+/*
+ * Стили для Swiper в секции "Каталог проектов"
+ * ============================================
+ */
+
+#projects .project-swiper {
+    width: 100%;
+    padding-top: 20px; /* Отступ сверху для пагинации/навигации */
+    padding-bottom: 50px; /* Отступ снизу для пагинации/навигации */
+    overflow: hidden; /* Скрываем лишнее */
+    position: relative; /* Для позиционирования кнопок */
+}
+
+#projects .swiper-slide {
+    height: auto; /* Позволяем слайду подстраиваться под высоту контента */
+    display: flex; /* Используем flex для выравнивания карточки */
+    justify-content: center; /* Центрируем карточку в слайде */
+    align-items: stretch; /* Растягиваем карточку по высоте */
+    /* Swiper сам управляет отступами через spaceBetween в JS */
+    box-sizing: border-box; /* Учитываем padding/border в размере слайда */
+}
+
+/* Стилизация кнопок навигации Swiper */
+#projects .swiper-button-prev,
+#projects .swiper-button-next {
+    color: var(--primary-color); /* Цвет стрелок */
+    width: 44px; /* Ширина кнопки (стандарт Swiper) */
+    height: 44px; /* Высота кнопки (стандарт Swiper) */
+    background-color: rgba(42, 42, 42, 0.7); /* Полупрозрачный фон */
+    border-radius: 50%; /* Круглые кнопки */
+    transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+    top: 50%; /* Позиционируем по центру вертикали */
+    transform: translateY(-50%); /* Точное центрирование */
+}
+
+#projects .swiper-button-prev:hover,
+#projects .swiper-button-next:hover {
+    background-color: rgba(0, 255, 255, 0.8); /* Яркий фон при наведении */
+    color: var(--background-color); /* Темные стрелки */
+}
+
+#projects .swiper-button-prev::after,
+#projects .swiper-button-next::after {
+    font-size: 18px; /* Размер иконки стрелки */
+    font-weight: bold;
+}
+
+/* Позиционирование кнопок (немного сдвинем от краев) */
+/* Удалены фиксированные left/right и !important для использования стандартного позиционирования Swiper */
+#projects .swiper-button-prev {
+    /* left: 5px !important; */
+}
+#projects .swiper-button-next {
+    /* right: 5px !important; */
+}
+
+/* Стилизация пагинации Swiper */
+#projects .swiper-pagination {
+    bottom: 10px; /* Позиция пагинации */
+}
+
+#projects .swiper-pagination-bullet {
+    width: 10px; /* Размер точки */
+    height: 10px; /* Размер точки */
+    background-color: var(--secondary-color); /* Цвет неактивной точки */
+    opacity: 0.7;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+#projects .swiper-pagination-bullet-active {
+    background-color: var(--primary-color); /* Цвет активной точки */
+    opacity: 1;
+}
+
+/* Адаптивность для кнопок на больших экранах */
+@media (min-width: 769px) {
+    #projects .swiper-button-prev {
+        /* left: 15px !important; */
+    }
+    #projects .swiper-button-next {
+        /* right: 15px !important; */
+    }
+}
+/*
+ * Стили для Sticky Navigation Menu
+ * =================================
+ */
+.sticky-nav {
+    position: sticky; /* Делаем меню липким */
+    top: 0; /* Прилипает к верху экрана */
+    width: 100%;
+    background-color: rgba(26, 26, 26, 0.95); /* Очень темный полупрозрачный фон */
+    padding: 10px 0; /* Вертикальные отступы */
+    z-index: 50; /* Поверх остального контента, но ниже модального окна */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5); /* Тень для отделения от контента */
+    backdrop-filter: blur(5px); /* Эффект размытия фона */
+    -webkit-backdrop-filter: blur(5px); /* Для Safari */
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.sticky-nav .container {
+    display: flex;
+    justify-content: space-between; /* Распределяем элементы: меню и переключатель языка */
+    align-items: center;
+    flex-wrap: wrap; /* Разрешаем перенос элементов на новую строку */
+}
+
+.nav-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px; /* Отступ между основными пунктами меню */
+    flex-shrink: 0; /* Предотвращаем сжатие */
+}
+
+.nav-item {
+    position: relative; /* Для позиционирования выпадающего списка */
+}
+
+.nav-link {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.1em;
+    cursor: pointer;
+    padding: 10px 15px;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+    text-decoration: none; /* Убираем подчеркивание для ссылок */
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: var(--primary-color); /* Неоновый цвет при наведении/фокусе */
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.6); /* Неоновая тень */
+    outline: none; /* Убираем стандартный outline */
+}
+
+/* Стили для выпадающего списка */
+.dropdown-menu {
+    list-style: none;
+    margin: 0;
+    padding: 10px 0;
+    position: absolute;
+    top: 100%; /* Располагаем под кнопкой */
+    left: 0;
+    background-color: var(--card-background); /* Темный фон для выпадающего списка */
+    border: 1px solid var(--secondary-color);
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    min-width: 200px; /* Минимальная ширина */
+    z-index: 60; /* Поверх основного меню */
+    opacity: 0; /* Скрываем по умолчанию */
+    visibility: hidden;
+    transform: translateY(10px); /* Сдвигаем вниз для анимации */
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.nav-item.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-menu li {
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-item {
+    display: block; /* Делаем ссылки блочными для удобства клика */
+    padding: 10px 20px;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    background-color: var(--secondary-color); /* Подсветка при наведении/фокусе */
+    color: var(--primary-color);
+    outline: none;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+    .sticky-nav .container {
+        /* justify-content: space-between; */ /* Уже установлено выше */
+        flex-direction: row; /* Элементы в ряд на мобильных */
+        justify-content: space-between; /* Распределяем элементы */
+        align-items: center; /* Выравниваем по центру вертикали */
+    }
+
+    .nav-list {
+        gap: 15px; /* Уменьшаем отступ */
+        margin-bottom: 0; /* Убираем нижний отступ */
+        flex-shrink: 0; /* Предотвращаем сжатие */
+    }
+
+    .language-switcher {
+        margin-left: 0; /* Убираем прижимание к правому краю */
+        padding: 0; /* Убираем лишние отступы */
+        /* Добавляем небольшой отступ слева, чтобы отделить от меню */
+        margin-left: 15px;
+        flex-shrink: 0; /* Предотвращаем сжатие */
+    }
+
+    .nav-link {
+        font-size: 1em; /* Уменьшаем шрифт */
+        padding: 8px 10px;
+    }
+
+    .dropdown-menu {
+        min-width: 150px; /* Уменьшаем минимальную ширину */
+        max-width: 100%; /* Ограничиваем максимальную ширину */
+        width: 100%; /* Занимаем всю доступную ширину */
+    }
+
+    .dropdown-item {
+        padding: 8px 15px;
+        font-size: 0.9em;
+    }
+}

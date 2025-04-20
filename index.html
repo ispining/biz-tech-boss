@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автоматизация для вашего бизнеса</title>
+    <!-- Безопасность по умолчанию: CSP (добавлено data: для font-src) -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https:; script-src 'self' https: 'unsafe-inline'; style-src 'self' https: 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' https: fonts.gstatic.com data:;">
+    
+    <meta name="description" content="Разработка интеллектуальных решений для автоматизации и оптимизации бизнес-процессов. Full-Stack разработка, ИИ, веб-сайты, ПО, скрипты, боты, техподдержка, безопасность, умные дома.">
+
+    <!-- Open Graph Meta Tags for Social Sharing -->
+    <meta property="og:title" content="Автоматизация для вашего бизнеса">
+    <meta property="og:description" content="Разработка интеллектуальных решений для автоматизации и оптимизации бизнес-процессов. Full-Stack разработка, ИИ, веб-сайты, ПО, скрипты, боты, техподдержка, безопасность, умные дома.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://biz-tech-boss.onrender.com">
+    <meta property="og:image" content="https://raw.githubusercontent.com/ispining/ru/refs/heads/master/images/photo1683672140.jpeg">
+    <!-- Schema.org Microdata for Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Илья Лазарев - Full-Stack Разработчик",
+      "url": "https://biz-tech-boss.onrender.com",
+      "logo": "https://raw.githubusercontent.com/ispining/ru/refs/heads/master/images/photo1683672140.jpeg",
+      "description": "Разработка интеллектуальных решений для автоматизации и оптимизации бизнес-процессов. Full-Stack разработка, ИИ, веб-сайты, ПО, скрипты, боты, техподдержка, безопасность, умные дома.",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+972504834744",
+        "contactType": "customer service",
+        "email": "lazarevillya031@gmail.com"
+      },
+      "sameAs": [
+        "https://wa.me/972504834744",
+        "https://t.me/sbdtadmin",
+        "https://www.linkedin.com/in/sbdt",
+        "https://www.facebook.com/ill4u",
+        "https://www.youtube.com/@PythonShik"
+      ]
+    }
+    </script>
+    <style>
+      /*
+       * Критические стили для первоначального отображения
+       */
+      body, html {
+          margin: 0;
+          padding: 0;
+          width: 100%;
+          min-height: 100vh; /* Минимальная высота для футера внизу */
+          line-height: 1.6;
+          font-family: 'Orbitron', sans-serif; /* Применяем новый шрифт */
+          color: var(--text-color); /* Используем переменную для цвета текста */
+          background-color: var(--background-color); /* Используем переменную для фона */
+          scroll-behavior: smooth; /* Плавная прокрутка по якорям */
+          transition: color 0.5s ease, background-color 0.5s ease; /* Плавный переход при смене темы */
+      }
+
+      *, *::before, *::after {
+          box-sizing: border-box; /* Учитываем padding и border в размере элемента */
+      }
+
+      .container {
+          width: 90%;
+          max-width: 1200px; /* Максимальная ширина контента */
+          margin: 0 auto; /* Центрирование блока */
+          padding: 0 15px; /* Внутренние отступы по бокам */
+      }
+
+      .section {
+          padding: 100px 0;
+          text-align: center;
+          opacity: 0;
+          transform: translateY(50px);
+          transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+      }
+
+      .section.visible {
+          opacity: 1;
+          transform: translateY(0);
+      }
+
+      .section h2 {
+          margin-top: 0;
+          margin-bottom: 60px;
+          font-size: 3em;
+          color: var(--primary-color);
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          position: relative;
+      }
+
+      .section h2::after {
+          content: '';
+          display: block;
+          width: 80px;
+          height: 4px;
+          background-color: var(--primary-color);
+          margin: 20px auto 0;
+          transition: width 0.5s ease;
+      }
+
+      .section.visible h2::after {
+          width: 120px;
+      }
+
+      .btn {
+          display: inline-block;
+          background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+          color: white;
+          padding: 15px 30px;
+          text-decoration: none;
+          border-radius: 30px;
+          font-size: 1.2em;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          border: none;
+          cursor: pointer;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          overflow: hidden;
+          position: relative;
+          z-index: 1;
+      }
+
+      .btn::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+          transition: left 0.3s ease;
+          z-index: -1;
+      }
+
+      .btn:hover::before {
+          left: 0;
+      }
+
+      .btn:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+      }
+
+      .social-links {
+          display: flex;
+          gap: 15px;
+          justify-content: center;
+          margin-top: 30px;
+          flex-wrap: wrap;
+      }
+
+      @media (max-width: 480px) {
+          .social-links {
+              justify-content: space-around;
+          }
+          .social-icon {
+              flex: 1 1 calc(50% - 15px);
+              max-width: calc(50% - 15px);
+              width: auto;
+              padding: 20px 30px !important;
+          }
+      }
+
+      .social-icon {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          padding: 10px 20px;
+          font-size: 1em;
+      }
+
+      .social-icon i {
+          font-size: 1.2em;
+      }
+
+      .social-icon[aria-label="WhatsApp"] {
+          background: linear-gradient(45deg, #25D366, #128C7E);
+          border-color: #25D366;
+      }
+
+      .social-icon[aria-label="WhatsApp"]:hover {
+           box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+           border-color: #128C7E;
+      }
+
+      .social-icon[aria-label="Telegram"] {
+           border-color: var(--primary-color);
+      }
+
+      .social-icon[aria-label="Telegram"]:hover {
+           box-shadow: 0 10px 20px rgba(0, 123, 255, 0.3);
+      }
+
+      .social-icon[aria-label="LinkedIn"] {
+          background: linear-gradient(45deg, #0077B5, #004F80);
+          border-color: #0077B5;
+      }
+
+      .social-icon[aria-label="LinkedIn"]:hover {
+           box-shadow: 0 10px 20px rgba(0, 119, 181, 0.3);
+           border-color: #004F80;
+      }
+
+      .social-icon[aria-label="Facebook"] {
+          background: linear-gradient(45deg, #1877F2, #0E5A9E);
+          border-color: #1877F2;
+      }
+
+      .social-icon[aria-label="Facebook"]:hover {
+           box-shadow: 0 10px 20px rgba(24, 119, 242, 0.3);
+           border-color: #0E5A9E;
+      }
+
+      .social-icon[aria-label="YouTube"] {
+          background: linear-gradient(45deg, #FF0000, #CC0000);
+          border-color: #FF0000;
+      }
+
+      .social-icon[aria-label="YouTube"]:hover {
+           box-shadow: 0 10px 20px rgba(255, 0, 0, 0.3);
+           border-color: #CC0000;
+      }
+
+      .youtube-icon {
+          display: none;
+      }
+
+      #hero {
+          position: relative;
+          background-color: #000;
+          color: white;
+          padding: 40px 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          min-height: 100vh;
+          height: 100vh;
+          overflow: hidden;
+          text-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+      }
+
+      #hero .container {
+          position: relative;
+          z-index: 2;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100%;
+      }
+
+      #hero h1 {
+          font-size: 2em;
+          margin-bottom: 15px;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          line-height: 1.2;
+      }
+
+      #hero p {
+          font-size: 0.9em;
+          margin-bottom: 30px;
+          opacity: 0.9;
+          background-color: rgba(0, 0, 0, 0.5);
+          padding: 5px 15px;
+          border-radius: 10px;
+          display: inline-block;
+          margin-top: 10px;
+      }
+
+      .hero-background {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: radial-gradient(circle at center, rgba(0, 123, 255, 0.3) 0%, rgba(0, 0, 0, 0.8) 80%);
+          z-index: 1;
+      }
+
+      .language-switcher {
+          z-index: 51;
+          margin-left: auto;
+          padding: 10px 0;
+          flex-shrink: 0;
+      }
+
+      #language-select {
+          padding: 8px 15px;
+          border-radius: 20px;
+          border: 1px solid var(--secondary-color);
+          background-color: var(--background-color);
+          color: var(--text-color);
+          font-size: 1em;
+          cursor: pointer;
+          transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+      }
+
+      #language-select:hover {
+          border-color: var(--primary-color);
+      }
+
+      body.rtl {
+          direction: rtl;
+          text-align: right;
+      }
+
+      body.rtl .section h2::after {
+          margin: 20px auto 0;
+      }
+
+      body.rtl .service-item,
+      body.rtl .portfolio-item,
+      body.rtl .course-item,
+      body.rtl .project-item {
+          text-align: right;
+      }
+
+      body.rtl .about-me-text {
+          text-align: right;
+      }
+
+      body.rtl #contact-form {
+          text-align: right;
+      }
+
+      body.rtl #contact-form input,
+      body.rtl #contact-form textarea {
+          text-align: right;
+      }
+
+      body.rtl .contact-info {
+          text-align: right;
+      }
+
+      body.rtl .dropdown-menu {
+          right: 0;
+          left: auto;
+      }
+
+      @media (min-width: 481px) {
+          .section {
+              padding: 120px 0;
+          }
+
+          .section h2 {
+              font-size: 3.5em;
+          }
+
+          #hero h1 {
+              font-size: 3em;
+              letter-spacing: 3px;
+          }
+
+          #hero p {
+              font-size: 1.2em;
+          }
+      }
+
+      @media (min-width: 769px) {
+          .section {
+              padding: 150px 0;
+          }
+
+          .section h2 {
+              font-size: 4em;
+          }
+
+          #hero h1 {
+              font-size: 3.5em;
+          }
+
+          #hero p {
+              font-size: 1.4em;
+          }
+      }
+
+      @media (min-width: 1200px) {
+           #hero h1 {
+              font-size: 4.5em;
+          }
+
+          #hero p {
+              font-size: 1.6em;
+          }
+      }
+
+      body {
+          --primary-color: #00ffff;
+          --secondary-color: #5a6268;
+          --text-color: #e9e9e9;
+          --background-color: #1a1a1a;
+          --card-background: #2a2a2a;
+      }
+
+      .section h2 {
+          color: var(--primary-color);
+      }
+
+      .service-item h3,
+      .portfolio-item h3 {
+           color: var(--primary-color);
+      }
+
+      .tech-list span {
+          background-color: var(--secondary-color);
+          color: var(--text-color);
+      }
+
+      #contact-form input,
+      #contact-form textarea {
+          border-color: var(--secondary-color);
+      }
+
+      footer {
+          background-color: var(--secondary-color);
+      }
+
+      .service-item.hovered,
+      .portfolio-item.hovered,
+      .course-item.hovered,
+      .project-item.hovered {
+          box-shadow: 0 12px 24px rgba(0, 123, 255, 0.3);
+      }
+
+      .service-item.hovered,
+      .portfolio-item.hovered,
+      .course-item.hovered,
+      .project-item.hovered {
+           box-shadow: 0 12px 24px rgba(0, 255, 255, 0.2);
+      }
+
+      .modal {
+          display: none;
+          position: fixed;
+          z-index: 101;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 100%;
+          overflow: auto;
+          background-color: rgba(0, 0, 0, 0.8);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          padding-top: 60px;
+      }
+
+      .modal-content {
+          background-color: var(--card-background);
+          margin: 5% auto;
+          padding: 40px;
+          border: 1px solid var(--primary-color);
+          width: 90%;
+          max-width: 800px;
+          border-radius: 10px;
+          box-shadow: 0 10px 30px rgba(0, 123, 255, 0.4);
+          position: relative;
+          animation: modalOpen 0.5s ease-out;
+      }
+
+      @keyframes modalOpen {
+          from {
+              opacity: 0;
+              transform: translateY(-50px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      .close-button {
+          color: var(--text-color);
+          font-size: 30px;
+          font-weight: bold;
+          position: absolute;
+          top: 15px;
+          right: 25px;
+          cursor: pointer;
+          transition: color 0.3s ease;
+      }
+
+      .close-button:hover,
+      .close-button:focus {
+          color: var(--primary-color);
+          text-decoration: none;
+          cursor: pointer;
+      }
+
+      .modal-content h3 {
+          color: var(--primary-color);
+          margin-top: 0;
+          margin-bottom: 20px;
+          font-size: 2em;
+      }
+
+      .modal-content p {
+          color: var(--text-color);
+          margin-bottom: 15px;
+      }
+
+      .modal-content ul {
+          color: var(--text-color);
+          margin-bottom: 15px;
+          padding-left: 20px;
+      }
+
+      .modal-content ul li {
+          margin-bottom: 8px;
+      }
+
+      @keyframes fadeInUp {
+          from {
+              opacity: 0;
+              transform: translateY(50px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      .section.visible {
+          animation: fadeInUp 0.8s ease-out forwards;
+      }
+
+      .about-me-container {
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-start;
+          gap: 2rem;
+      }
+
+      .about-me-photo {
+          flex: 1 1 250px;
+          max-width: 300px;
+          margin: 0 auto 1rem auto;
+      }
+
+      .about-me-photo img {
+          display: block;
+          width: 100%;
+          height: auto;
+          border-radius: 50%;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          object-fit: cover;
+      }
+
+      .about-me-text {
+          flex: 2 1 400px;
+          text-align: left;
+      }
+
+      .about-me-name {
+          font-size: 2.5rem;
+          margin-bottom: 0.5rem;
+          font-weight: 700;
+          color: var(--primary-color);
+      }
+
+      @media (min-width: 768px) {
+          .about-me-photo {
+              margin: 0;
+          }
+      }
+
+      #projects .project-swiper {
+          width: 100%;
+          padding-top: 20px;
+          padding-bottom: 50px;
+          overflow: hidden;
+          position: relative;
+      }
+
+      #projects .swiper-slide {
+          height: auto;
+          display: flex;
+          justify-content: center;
+          align-items: stretch;
+          box-sizing: border-box;
+      }
+
+      #projects .swiper-button-prev,
+      #projects .swiper-button-next {
+          color: var(--primary-color);
+          width: 44px;
+          height: 44px;
+          background-color: rgba(42, 42, 42, 0.7);
+          border-radius: 50%;
+          transition: background-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+          top: 50%;
+          transform: translateY(-50%);
+      }
+
+      #projects .swiper-button-prev:hover,
+      #projects .swiper-button-next:hover {
+          background-color: rgba(0, 255, 255, 0.8);
+          color: var(--background-color);
+      }
+
+      #projects .swiper-button-prev::after,
+      #projects .swiper-button-next::after {
+          font-size: 18px;
+          font-weight: bold;
+      }
+
+      @media (min-width: 769px) {
+          #projects .swiper-button-prev {
+          }
+          #projects .swiper-button-next {
+          }
+      }
+
+      #projects .swiper-pagination {
+          bottom: 10px;
+      }
+
+      #projects .swiper-pagination-bullet {
+          width: 10px;
+          height: 10px;
+          background-color: var(--secondary-color);
+          opacity: 0.7;
+          transition: background-color 0.3s ease, opacity 0.3s ease;
+      }
+
+      #projects .swiper-pagination-bullet-active {
+          background-color: var(--primary-color);
+          opacity: 1;
+      }
+
+      .sticky-nav {
+          position: sticky;
+          top: 0;
+          width: 100%;
+          background-color: rgba(26, 26, 26, 0.95);
+          padding: 10px 0;
+          z-index: 50;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .sticky-nav .container {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          flex-wrap: wrap;
+      }
+
+      .nav-list {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          gap: 30px;
+          flex-shrink: 0;
+      }
+
+      .nav-item {
+          position: relative;
+      }
+
+      .nav-link {
+          background: none;
+          border: none;
+          color: var(--text-color);
+          font-size: 1.1em;
+          cursor: pointer;
+          padding: 10px 15px;
+          transition: color 0.3s ease, text-shadow 0.3s ease;
+          text-decoration: none;
+      }
+
+      .nav-link:hover,
+      .nav-link:focus {
+          color: var(--primary-color);
+          text-shadow: 0 0 8px rgba(0, 255, 255, 0.6);
+          outline: none;
+      }
+
+      .dropdown-menu {
+          list-style: none;
+          margin: 0;
+          padding: 10px 0;
+          position: absolute;
+          top: 100%;
+          left: 0;
+          background-color: var(--card-background);
+          border: 1px solid var(--secondary-color);
+          border-radius: 5px;
+          box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+          min-width: 200px;
+          z-index: 60;
+          opacity: 0;
+          visibility: hidden;
+          transform: translateY(10px);
+          transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+      }
+
+      .nav-item.active .dropdown-menu {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+      }
+
+      .dropdown-menu li {
+          padding: 0;
+          margin: 0;
+      }
+
+      .dropdown-item {
+          display: block;
+          padding: 10px 20px;
+          color: var(--text-color);
+          text-decoration: none;
+          transition: background-color 0.3s ease, color 0.3s ease;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+          background-color: var(--secondary-color);
+          color: var(--primary-color);
+          outline: none;
+      }
+
+      @media (max-width: 768px) {
+          .sticky-nav .container {
+              flex-direction: row;
+              justify-content: space-between;
+              align-items: center;
+          }
+
+          .nav-list {
+              gap: 15px;
+              margin-bottom: 0;
+              flex-shrink: 0;
+          }
+
+          .language-switcher {
+              margin-left: 0;
+              padding: 0;
+              margin-left: 15px;
+              flex-shrink: 0;
+          }
+
+          .nav-link {
+              font-size: 1em;
+              padding: 8px 10px;
+          }
+
+          .dropdown-menu {
+              min-width: 150px;
+              max-width: 100%;
+              width: 100%;
+          }
+
+          .dropdown-item {
+              padding: 8px 15px;
+              font-size: 0.9em;
+          }
+      }
+    </style>
+    <link rel="stylesheet" href="style.css">
+    <!-- Использование CDN для сторонних библиотек -->
+    <!-- Пример: Font Awesome для иконок -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Swiper.js CSS (v11.0.5) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Пример: Google Font - Orbitron -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Sticky Navigation Menu -->
+    <nav class="sticky-nav">
+        <div class="container">
+            <ul class="nav-list">
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.products">Продукты</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="https://worker-ai.onrender.com/" class="dropdown-item" target="_blank" rel="noopener noreferrer">Worker-AI</a></li>
+                        <li><a href="https://py-converts.onrender.com/" class="dropdown-item" target="_blank" rel="noopener noreferrer">PyConverts</a></li>
+                        <li><a href="https://ai-translate-11hp.onrender.com/" class="dropdown-item" target="_blank" rel="noopener noreferrer">AI-translate</a></li>
+
+                        <!-- Project links will be added here -->
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <button class="nav-link dropdown-toggle" aria-expanded="false" aria-haspopup="true" data-i18n="nav.categories">Категории</button>
+                    <ul class="dropdown-menu">
+                        <li><a href="#hero" class="dropdown-item" data-i18n="nav.categories.hero">Главный экран</a></li>
+                        <li><a href="#courses" class="dropdown-item" data-i18n="nav.categories.courses">Курсы</a></li>
+                        <li><a href="#projects" class="dropdown-item" data-i18n="nav.categories.projects">Каталог проектов</a></li>
+                        <li><a href="#services" class="dropdown-item" data-i18n="nav.categories.services">Наши услуги</a></li>
+                        <li><a href="#about" class="dropdown-item" data-i18n="nav.categories.about">Обо мне</a></li>
+                        <li><a href="#technologies" class="dropdown-item" data-i18n="nav.categories.technologies">Технологии</a></li>
+                        <li><a href="#contact" class="dropdown-item" data-i18n="nav.categories.contact">Свяжитесь с нами</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Переключатель языка -->
+            <div class="language-switcher">
+                <select id="language-select" aria-label="Выберите язык">
+                    <option value="ru">Русский</option>
+                    <option value="en">English</option>
+                    <option value="he">עברית</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+
+    <!-- Главный экран (Hero Section) -->
+    <header id="hero" class="section">
+        <div class="container">
+            <h1 data-i18n="hero.title">Автоматизация, которая трансформирует ваш бизнес</h1>
+            <p data-i18n="hero.subtitle">Мы создаем интеллектуальные решения для оптимизации процессов и роста эффективности.</p>
+            <div class="social-links"> <!-- Keep social-links for potential flexbox/grid styling -->
+                <a href="https://wa.me/972504834744" class="btn social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-i18n="social.whatsapp">WhatsApp</span>
+                </a>
+                <a href="https://t.me/sbdtadmin" class="btn social-icon" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span data-i18n="social.telegram">Telegram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sbdt" class="btn social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span data-i18n="social.linkedin">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/ill4u" class="btn social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                    <span data-i18n="social.facebook">Facebook</span>
+                </a>
+                <a href="https://www.youtube.com/@PythonShik" class="btn social-icon youtube-icon" aria-label="YouTube" target="_blank" rel="noopener noreferrer"> <!-- YouTube button -->
+                    <i class="fab fa-youtube"></i>
+                    <span data-i18n="social.youtube">YouTube</span>
+                </a>
+            </div>
+        </div>
+        <!-- Здесь будет место для интерактивной фоновой графики -->
+        <div class="hero-background"></div>
+    </header>
+
+
+    <!-- Курсы -->
+    <section id="courses" class="section">
+        <div class="container">
+            <h2 data-i18n="courses.title">Курсы</h2>
+            <div class="courses-grid">
+                <!-- Примеры курсов -->
+                <div class="course-item">
+                    <h3 data-i18n="courses.course1.title">Курс по Python</h3>
+                    <p data-i18n="courses.course1.description">Изучите основы и продвинутые возможности Python для разработки.</p>
+                </div>
+                 <div class="course-item">
+                    <h3 data-i18n="courses.course2.title">Курс по JavaScript</h3>
+                    <p data-i18n="courses.course2.description">Освойте современный JavaScript для фронтенд и бекенд разработки.</p>
+                </div>
+                <div class="course-item" data-url="https://biztechlab.onrender.com/">
+                    <h3 data-i18n="courses.course3.title">bizTechLab - Технологии в бизнесе</h3>
+                    <p data-i18n="courses.course3.description">Курс по интеграции современных технологий в бизнес-процессы.</p>
+                    <!-- Кнопка удалена, карточка будет кликабельной через JS -->
+                </div>
+                <!-- Добавить больше курсов -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Каталог проектов -->
+    <section id="projects" class="section">
+        <div class="container">
+            <h2 data-i18n="projects.title">Каталог проектов</h2>
+            <!-- Swiper Container -->
+            <div class="swiper project-swiper">
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <div class="project-item portfolio-item" data-url="https://worker-ai.onrender.com/">
+                            <img data-src="https://raw.githubusercontent.com/ispining/worker-ai/refs/heads/main/main-photo.png" src="" alt="Worker-AI Project Image">
+                            <h3 data-i18n="projects.worker_ai.title">Worker-AI</h3>
+                            <p data-i18n="projects.worker_ai.description">Проект для индикации личностных качеств сотрудников</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="project-item portfolio-item" data-url="https://py-converts.onrender.com/">
+                            <img data-src="https://raw.githubusercontent.com/ispining/biz-tech-boss/refs/heads/main/py-converts.png" src="" alt="PyConverts Project Image">
+                            <h3 data-i18n="projects.py_converts.title">PyConverts</h3>
+                            <p data-i18n="projects.py_converts.description">Python конвертеры: REST/cURL >>> Python</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                         <div class="project-item portfolio-item" data-url="https://ai-translate-11hp.onrender.com/">
+                            <img data-src="https://raw.githubusercontent.com/ispining/biz-tech-boss/refs/heads/main/ai_translate.png" src="" alt="AI-translate Project Image">
+                            <h3 data-i18n="projects.ai_translate.title">AI-translate</h3>
+                            <p data-i18n="projects.ai_translate.description">Интеллектуальный переводчик на базе ИИ для быстрого и точного перевода текстов.</p>
+                         </div>
+                    </div>
+                    <!-- Добавить больше слайдов/проектов сюда -->
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination project-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-prev project-button-prev"></div>
+                <div class="swiper-button-next project-button-next"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги (обновленная секция с подкатегориями и модальными окнами) -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 data-i18n="services.title">Наши услуги</h2>
+            <div class="services-grid">
+                <!-- Подкатегории услуг -->
+                <div class="service-item" data-service="ai">
+                    <h3 data-i18n="services.ai.title">ИИ для бизнеса</h3>
+                    <p data-i18n="services.ai.description">Внедрение решений на основе искусственного интеллекта для оптимизации и анализа.</p>
+                </div>
+                <div class="service-item" data-service="webdev">
+                    <h3 data-i18n="services.webdev.title">Разработка сайтов</h3>
+                    <p data-i18n="services.webdev.description">Создание современных, адаптивных и высокопроизводительных веб-сайтов.</p>
+                </div>
+                <div class="service-item" data-service="automation">
+                    <h3 data-i18n="services.automation.title">Автоматизация</h3>
+                    <p data-i18n="services.automation.description">Автоматизация рутинных бизнес-процессов для повышения эффективности.</p>
+                </div>
+                 <div class="service-item" data-service="software">
+                    <h3 data-i18n="services.software.title">Разработка ПО</h3>
+                    <p data-i18n="services.software.description">Разработка кастомного программного обеспечения под уникальные задачи вашего бизнеса.</p>
+                </div>
+                 <div class="service-item" data-service="prototyping">
+                    <h3 data-i18n="services.prototyping.title">Разработка прототипов</h3>
+                    <p data-i18n="services.prototyping.description">Быстрое создание интерактивных прототипов для тестирования идей.</p>
+                </div>
+                 <div class="service-item" data-service="scripts">
+                    <h3 data-i18n="services.scripts.title">Скрипты и боты</h3>
+                    <p data-i18n="services.scripts.description">Разработка скриптов и ботов для автоматизации задач и взаимодействия.</p>
+                </div>
+                <!-- Новые услуги -->
+                <div class="service-item" data-service="tech_support">
+                    <h3 data-i18n="services.tech_support.title">Техподдержка бизнеса</h3>
+                    <p data-i18n="services.tech_support.description">Комплексная техническая поддержка для бесперебойной работы вашего бизнеса.</p>
+                </div>
+                <div class="service-item" data-service="security">
+                    <h3 data-i18n="services.security.title">Безопасность и защита</h3>
+                    <p data-i18n="services.security.description">Установка и настройка систем видеонаблюдения и сигнализации.</p>
+                </div>
+                <div class="service-item" data-service="smart_home">
+                    <h3 data-i18n="services.smart_home.title">Умные дома</h3>
+                    <p data-i18n="services.smart_home.description">Проектирование и внедрение систем умного дома для комфорта и безопасности.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Обо мне -->
+    <section id="about" class="section">
+        <div class="container"> <!-- Основной контейнер секции -->
+            <!-- Заголовок секции вынесен для корректного центрирования -->
+            <h2 data-i18n="about.title">Обо мне</h2>
+
+            <!-- Flex-контейнер для фото и текста -->
+            <div class="about-me-container">
+                <!-- Контейнер для фото -->
+                <div class="about-me-photo">
+                    <!-- Замените src на реальный путь к фото -->
+                    <img src="https://raw.githubusercontent.com/ispining/ru/refs/heads/master/images/photo1683672140.jpeg" alt="Фото Ильи Лазарева" data-i18n-alt="about.photoAlt">
+                </div>
+                <!-- Контейнер для текста -->
+                <div class="about-me-text">
+                    <h3 class="about-me-name" data-i18n="about.name">Илья Лазарев</h3>
+                    <p data-i18n="about.description">Привет! Мне 28 лет, я Full-Stack разработчик из Израиля. Увлекаюсь созданием интерактивных веб-приложений, автоматизацией процессов и исследованием возможностей ИИ. Всегда в поиске интересных проектов и новых вызовов.</p>
+                    <!-- Можно добавить больше деталей: опыт, навыки и т.д. -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Технологии -->
+    <section id="technologies" class="section">
+        <div class="container">
+            <h2 data-i18n="technologies.title">Технологии</h2>
+            <div class="tech-list">
+                <span data-i18n="tech.python">Python</span>
+                <span data-i18n="tech.c">C</span>
+                <span data-i18n="tech.cpp">C++</span>
+                <span data-i18n="tech.bash">Bash</span>
+                <span data-i18n="tech.javascript">JavaScript</span>
+                <span data-i18n="tech.html">HTML</span>
+                <span data-i18n="tech.css">CSS</span>
+                <span data-i18n="tech.sql">SQL</span>
+                <span data-i18n="tech.flask">Flask</span>
+                <span data-i18n="tech.fastapi">FastAPI</span>
+                <span data-i18n="tech.telegram">Telegram</span>
+                <span data-i18n="tech.chartjs">Chart.js</span>
+                <span data-i18n="tech.bootstrap5">Bootstrap 5</span>
+                <span data-i18n="tech.jquery">jQuery</span>
+                <span data-i18n="tech.openai_gpt">OpenAI GPT</span>
+                <span data-i18n="tech.google_gemini">Google Gemini</span>
+                <span data-i18n="tech.multiagent_ai">Мультиагентные AI‑сценарии</span>
+                <span data-i18n="tech.sqlite">SQLite</span>
+                <span data-i18n="tech.postgresql">PostgreSQL</span>
+                <span data-i18n="tech.supabase">Supabase</span>
+                <span data-i18n="tech.docker">Docker</span>
+                <span data-i18n="tech.docker_compose">Docker Compose</span>
+                <span data-i18n="tech.termux">Termux</span>
+                <span data-i18n="tech.render">Render</span>
+                <span data-i18n="tech.mqtt">MQTT</span>
+                <span data-i18n="tech.github">GitHub</span>
+                <span data-i18n="tech.vscode">VS Code</span>
+                <span data-i18n="tech.bootstrap_studio">Bootstrap Studio</span>
+                <span data-i18n="tech.android_studio">Android Studio</span>
+                <span data-i18n="tech.esp32">ESP32</span>
+                <span data-i18n="tech.arduino_uno">Arduino Uno</span>
+                <span data-i18n="tech.arduino_nano">Arduino Nano</span>
+                <span data-i18n="tech.raspberry_pi">Raspberry Pi</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 data-i18n="contact.title">Свяжитесь с нами</h2>
+            <div class="social-links">
+                <a href="https://wa.me/972504834744" class="btn social-icon" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp"></i>
+                    <span data-i18n="social.whatsapp">WhatsApp</span>
+                </a>
+                <a href="https://t.me/sbdtadmin" class="btn social-icon" aria-label="Telegram" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span data-i18n="social.telegram">Telegram</span>
+                </a>
+                <a href="https://www.linkedin.com/in/sbdt" class="btn social-icon" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-linkedin-in"></i>
+                    <span data-i18n="social.linkedin">LinkedIn</span>
+                </a>
+                <a href="https://www.facebook.com/ill4u" class="btn social-icon" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-facebook-f"></i>
+                    <span data-i18n="social.facebook">Facebook</span>
+                </a>
+            </div>
+            <!-- Контактная информация -->
+            <div class="contact-info">
+                <p data-i18n="contact.email">Email: lazarevillya031@gmail.com</p>
+                <p data-i18n="contact.phone"><span dir="ltr">Телефон: +972 504834744</span></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <p data-i18n="footer.copyright">2025 Разработчик Илья Лазарев. <br>Все права защищены.</p>
+            <!-- Ссылки на соцсети -->
+        </div>
+    </footer>
+
+    <!-- Модальное окно для услуг -->
+    <div id="service-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 id="modal-title"></h3>
+            <div id="modal-details"></div>
+        </div>
+    </div>
+
+
+    <script src="script.js"></script>
+    <!-- Swiper.js JS (v11.0.5) - Исправлен integrity hash -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!-- Placeholder for other CDN JS libraries -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/some-library/1.0.0/some-library.min.js" integrity="..." crossorigin="anonymous"></script> -->
+</body>
+</html>
